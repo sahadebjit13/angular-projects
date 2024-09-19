@@ -1,0 +1,10 @@
+<div class="container">
+    <button (click)="onFetch()">Get Products</button>
+    <div class="card" *ngFor="let product of products">
+        <span>{{product.productId}}</span>
+        <span>{{product.brand}}</span>
+        <span>{{product.description}}</span>
+        <span>{{product.quantity}}</span>
+        <span>{{product.price}}</span>
+    </div>
+</div>

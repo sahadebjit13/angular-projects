@@ -1,0 +1,88 @@
+<style>
+    input{
+        padding: 10px;
+        font-size: 20px;
+        border-radius: 10px;
+    }
+    .container{
+        border: solid 2px black;
+        border-radius: 20px;
+        padding: 10px;
+    }
+    input[type=number]::-webkit-inner-spin-button, 
+    input[type=number]::-webkit-outer-spin-button { 
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        margin: 0; 
+    }
+</style>
+<main>
+    <div class="container">
+        <div>
+          <h2>Product Data</h2>
+          <p>Product Id: {{productId}}</p>
+          <p>Description: {{description}}</p>
+          <p>Instock: {{available}}</p>
+          <p>Quantity: {{quantity}}</p>
+          <p>Enter order quantity: <input type="number" [(ngModel)]="orderQuantity"></p>
+          <p>Your order quantity: {{orderQuantity}}</p>
+          <p>Is the quantity available: <span *ngIf="quantity>=orderQuantity; else notAvailable">Available</span></p>
+          <ng-template #notAvailable>Not available</ng-template>
+          <input type="button" value="Place Order" (click)="placeOrder()">
+          <p>{{ newDate | date : "dd/MM/YYYY" }}</p>
+
+          <div>
+            <table>
+                <thead>
+                    <th>Product Id</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                </thead>
+                <tr *ngFor="let product of products">
+                    <td>{{product.productId}}</td>
+                    <td>{{product.name}}</td>
+                    <td>{{product.category}}</td>
+                    <td>{{product.price}}</td>
+                </tr>
+            </table>
+          </div>
+          <div [ngSwitch]="orderQuantity">
+            <span *ngSwitchCase="11">Not available</span>
+            <span *ngSwitchCase="10">Exactly available</span>
+            <span *ngSwitchCase="9">Fully available</span>
+            <span *ngSwitchDefault>Check your input</span>         
+          </div>
+          <div>
+            <table>
+                <thead>
+                    <th>Index</th>
+                    <th>Product Id</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                </thead>
+                <tr *ngFor="let product of products; index as i; even as isEven">
+                    <ng-template [ngIf]="isEven" [ngIfElse]="isOdd">
+                        <td>{{i}}</td>
+                        <td>{{product.productId}}</td>
+                        <td>{{product.name}}</td>
+                        <td>{{product.category}}</td>
+                        <td>{{product.price}}</td>
+                    </ng-template>
+                    <ng-template #isOdd>
+                        <td>{{i}}</td>
+                        <td>{{product.productId}}</td>
+                        <td>{{product.name}}</td>
+                        <td>{{product.category}}</td>
+                        <td>{{product.price}}</td>
+                    </ng-template>
+                </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+</main>
+
+

@@ -1,0 +1,17 @@
+.container{
+    width: max-content;
+    background-color: cornsilk;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.card{
+    padding: 10px;
+    background-color: black;
+    color: cornsilk;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+}

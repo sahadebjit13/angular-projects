@@ -1,0 +1,42 @@
+<div class="container">
+    Data Component
+    <div>
+        <label for="brand">Enter company name: </label>
+        <input type="text" name="brand" [(ngModel)]="brand" value="brand">
+        <input type="button" value="Filter" (click)="commonFunction(brand)">
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Product Id</th>
+                <th>Brand</th>
+                <th>Description</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <!--[innerHTML]="filteredData"-->
+        <tbody  *ngFor="let product of newProductData">
+            <tr>
+                <td>{{product.productId}}</td>
+                <td>{{product.brand}}</td>
+                <td>{{product.description}}</td>
+                <td>{{product.quantity}}</td>
+                <td>{{product.price}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <table>
+        <thead>
+            <tr>
+                <th>Index</th>
+                <th>Brand</th>
+                <th>Product Count</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let product of newCountedProductData; index as i">
+            
+
+        </tbody>
+    </table>
+</div>

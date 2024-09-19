@@ -1,0 +1,18 @@
+<div>
+    <div>
+        <form [ngStyle]="{'background-color': props.color}">
+            <input type="radio" [(ngModel)]="props.color" name="colorChanger" value="blue">Blue<br>
+            <input type="radio" [(ngModel)]="props.color" name="colorChanger" value="red">Red<br>
+            <input type="radio" [(ngModel)]="props.color" name="colorChanger" value="green">Green<br>
+        </form>
+        <div>Selected Radio: {{props.color}}</div>
+    </div>
+    <div>
+        <form>
+            <label>Enter font size</label>
+            <input type="text" [(ngModel)]="fontSize" value="10">
+        </form>
+        <p [ngStyle]="{'fontSize': fontSize}">This is the preview</p>
+        <div>Selected Font Size: {{fontSize}}</div>
+    </div>
+</div>
